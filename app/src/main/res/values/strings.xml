@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MessApp</string>
+    <string name="verify_content">Enter the OTP code to verify your phone number</string>
+    <string name="btn_continue_string">Continue</string>
+</resources>
