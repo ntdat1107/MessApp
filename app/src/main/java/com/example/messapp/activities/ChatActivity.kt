@@ -94,6 +94,8 @@ class ChatActivity : AppCompatActivity() {
                                     binding?.tvStatus!!.visibility = View.GONE
                                 }
                             }
+                        } else {
+                            binding?.tvStatus!!.visibility = View.GONE
                         }
                     }
                 }

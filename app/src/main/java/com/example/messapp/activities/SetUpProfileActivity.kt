@@ -23,7 +23,6 @@ class SetUpProfileActivity : AppCompatActivity() {
     private var mSelectedImageUri: Uri? = null
     private lateinit var mProgressDialog: ProgressDialog
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySetUpProfileBinding.inflate(layoutInflater)
@@ -84,8 +83,18 @@ class SetUpProfileActivity : AppCompatActivity() {
                                     .child(uid)
                                     .setValue(user)
                                     .addOnSuccessListener {
+
+                                        val obj = HashMap<String, Any>()
+                                        obj["name"] = userName
+
+                                        mDb.reference.child("stories")
+                                            .child(user.uid)
+                                            .updateChildren(obj)
+
                                         mProgressDialog.dismiss()
-                                        startActivity(Intent(this, MainActivity::class.java))
+                                        if (!intent.hasExtra("image_profile")) {
+                                            startActivity(Intent(this, MainActivity::class.java))
+                                        }
                                         finish()
                                     }
                             }
